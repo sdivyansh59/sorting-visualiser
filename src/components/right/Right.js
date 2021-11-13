@@ -1,17 +1,32 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import  './right.scss';
 
-function Right({array}) {
+function Right({state,setstate,size}) {
     
+    useEffect(() => {
+    
+    },[size]);
+
     return (
         <div className='right'>
-            <div className='right__bar'>1111111
-                {/* {array.map((eleObj)=>(
-                 <div style={{color: `${eleObj.color}` , width:`${100/array.length}%` , height:`${array.value}`}}> 
-                   {}
-                  </div>)
-                )} */}
-            </div> 
+            
+                {state.map((obj,index)=>  (
+                    <div  className="right__bar"  
+                    style={
+                        {
+                            height: `${obj.value}%`,
+                            width: `${Math.floor(70/size)}%`,
+                            backgroundColor: `${obj.color}`,
+                            color: 'white'
+                        }
+                        }
+                        key={index}
+                    >
+                      {/* {`${obj.value}`}  */}
+                     </div>
+                )
+                )}
+        
         </div>
     )
 }

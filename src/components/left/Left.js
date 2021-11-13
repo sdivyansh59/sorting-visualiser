@@ -1,8 +1,15 @@
 import React from 'react'
 import './left.scss';
+import { bubbleSort } from '../../Algorithms/bubbe-sort';
 
+function Left({size,setsize,state,setstate})  {
 
-function Left({size,setsize})  {
+const handleClick = () => {
+ // get type of sort
+
+ // apply
+ setstate(bubbleSort([...state]));
+}    
 
 function updateSize(newSize){
   setsize(newSize); 
@@ -27,7 +34,7 @@ function handleInputChange(e){
                 </div>
 
                 <div>Input Size</div>
-                <div> <input type='number' min='0' max='100' placeholder={`${size}`} onChange={handleInputChange} ></input> </div>
+                <div> <input type='range' min='10' max='50'  onChange={handleInputChange} ></input> </div>
 
                 <div>Initial Array</div>
                 <div> <input type='option'></input> </div>
@@ -43,13 +50,13 @@ function handleInputChange(e){
 
                 <div>Speed</div> 
                 <div>
-                    <input type="range" id="vol" name="vol" min="0" max="50"></input>
+                    <input type="range" id="vol" name="vol" min="1" max="20"></input>
                 </div>
 
 
             </div>
 
-            <button>Start</button>
+            <button onClick={handleClick}>Start</button>
         </div>
     )
 }
