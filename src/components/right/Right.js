@@ -5,7 +5,7 @@ function Right({state,setstate,size}) {
     
     useEffect(() => {
     
-    },[size]);
+    },[size,state]);
 
     return (
         <div className='right'>
@@ -16,13 +16,13 @@ function Right({state,setstate,size}) {
                         {
                             height: `${obj.value}%`,
                             width: `${Math.floor(70/size)}%`,
-                            backgroundColor: `${obj.color}`,
+                            backgroundColor: `${ obj.compare ? 'white' : '#293451'}`,
                             color: 'white'
                         }
                         }
                         key={index}
                     >
-                      {/* {`${obj.value}`}  */}
+                      {`${obj.value}`} 
                      </div>
                 )
                 )}

@@ -8,7 +8,7 @@ const handleClick = () => {
  // get type of sort
 
  // apply
- setstate(bubbleSort([...state]));
+ (bubbleSort([...state],setstate,state));
 }    
 
 function updateSize(newSize){

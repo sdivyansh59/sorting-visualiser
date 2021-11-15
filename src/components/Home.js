@@ -9,7 +9,14 @@ const  generator = require('random-array-generator');
 
 function initialState(size=20) {
     let arr=generator.randomArray({min: 10, max: 100, elements: size});
-    return arr.map( ele =>  ( { value : ele , color : '#293451' }) );
+    return arr.map( ele =>  ( 
+        {
+            value : ele , 
+            compare : false,
+            sorted : false,
+            color :  '#293451' ,
+        
+        }) );
 }
 
 function Home() {
@@ -17,8 +24,11 @@ function Home() {
     /*  
       Data structure 
       [{  
+          
           value : value,
           color :color,
+          compare : false,
+          sorted : false,
 
       } ,{} , {}, ....] 
     */
