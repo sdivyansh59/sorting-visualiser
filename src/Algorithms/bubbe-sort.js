@@ -1,64 +1,146 @@
-export const  bubbleSort = (arrObj, setstate ,state) => {
-//  let n = arr.size();
-// let arr = arrObj.map( (obj) => obj.value);
-     let interval;
-let i = 0; 
-i < arrObj.length; 
-i++;
-function outer ()  {
-  
-   let timer = 0; 
-   setTimeout(()=>{
 
-   for(let j = 0; j < ( arrObj.length - i -1 ); j++){
+export const  bubbleSort = ( state) => {  
+  let arr = state.map((objArr)=> objArr );
+  let history =[];
+
+  console.log("clicked");
+
+  history.push(
+       arr.map((a)=>{
+          return {...a};
+       } )
+  )
+
+for(let i = 0; i < arr.length; i++){
+     
+   // Last i elements are already in place  
+   for(let j = 0; j < ( arr.length - i -1 ); j++){
        
      // Checking if the item at present iteration 
      // is greater than the next iteration
-    
-     if(arrObj[j].value > arrObj[j+1].value){
+     arr[j].color ='white';
+     arr[j+1].color ='white';
+     
+     history.push(
+       arr.map((a)=>{
+          return {...a};
+       } )
+     )
 
-      setTimeout(()=>{
-        arrObj[j].compare =true;
-        arrObj[j+1].compare = true;
-        setstate([...arrObj]) ;
+     if(arr[j].value > arr[j+1].value){
 
-      },100);
+       arr[j].color ='#DC143C';    // red
+       arr[j+1].color ='#DC143C';
 
+      history.push(
+       arr.map((a)=>{
+          return {...a};
+       } )
+      )
+       // If the condition is true then swap them
+       var temp = arr[j]
+       arr[j] = arr[j + 1]
+       arr[j+1] = temp
 
       
-      setTimeout(()=>{
-        arrObj[j].compare =false;
-        arrObj[j+1].compare = false;
-        setstate([...arrObj]) ;
-    
-      },300);
 
 
-      setTimeout(()=>{
-       let temp = arrObj[j].value;
-       arrObj[j].value = arrObj[j + 1].value
-       arrObj[j+1].value = temp;
-       setstate([...arrObj]);
-      },400); 
-      
+     }
+     else{
+        arr[j].color ='#32CD32';   //green
+        arr[j+1].color ='#32CD32';
+
+        history.push(
+        arr.map((a)=>{
+          return {...a};
+        } )
+       );
      }
 
+    arr[j].color ='#293451';  //blue
+    arr[j+1].color ='#293451';
+
+      history.push(
+       arr.map((a)=>{
+          return {...a};
+       } )
+      );
+
    }
-    },1000+timer)
-    timer+=1000;
+ }
 
- }  
- outer (i);
-
- 
-     
-   // Last i elements are already in place 
-  
- 
-
- // Print the sorted array
-
- console.log(arrObj);
- 
-//  return arrObj;
+// print history arra
+// console.log(history);
+return history;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//********* */ older  code  *********
+
+// setTimeout(()=>{
+
+//    for(let j = 0; j < ( state.length - i -1 ); j++){
+       
+//     console.log(i,j);
+//     if(state[j].value > state[j+1].value){
+
+//       setTimeout(()=>{   
+
+//         setstate((arrObj)=>{
+//           arrObj[j].compare =true;
+//           arrObj[j+1].compare = true;
+//           return [...arrObj]
+//         });
+
+//       },100);
+
+
+      
+//       setTimeout(()=>{
+       
+//         setstate((arrObj)=>{
+//            arrObj[j].compare =false;
+//            arrObj[j+1].compare = false;
+//            return [...arrObj]
+        
+//         } );
+    
+//       },300);
+
+
+//       setTimeout(()=>{
+      
+//        setstate((arrObj) => {
+       
+//         let temp = arrObj[j];
+//         arrObj[j] = arrObj[j+1];
+//         arrObj[j+1] = temp;
+//         return [...arrObj]
+//        });
+
+//       },400); 
+      
+//     }
+
+//    }
+//  },interval)
+//   interval+=1000;
+
+//   if(i+1< state.length) {
+//     setstate((state) => state)
+//     outer(i+1);
+//   }

@@ -1,11 +1,9 @@
-import React,{useEffect} from 'react'
+import React from 'react'
 import  './right.scss';
 
-function Right({state,setstate,size}) {
+function Right({state,size}) {
     
-    useEffect(() => {
     
-    },[size,state]);
 
     return (
         <div className='right'>
@@ -16,7 +14,7 @@ function Right({state,setstate,size}) {
                         {
                             height: `${obj.value}%`,
                             width: `${Math.floor(70/size)}%`,
-                            backgroundColor: `${ obj.compare ? 'white' : '#293451'}`,
+                            backgroundColor: `${ obj.color}`,
                             color: 'white'
                         }
                         }

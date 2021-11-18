@@ -2,26 +2,28 @@ import React from 'react'
 import './left.scss';
 import { bubbleSort } from '../../Algorithms/bubbe-sort';
 
-function Left({size,setsize,state,setstate})  {
+
+function Left({size,setsize,state,setplaying,sethistory,setindex})  {  
 
 const handleClick = () => {
- // get type of sort
-
- // apply
- (bubbleSort([...state],setstate,state));
+ sethistory(bubbleSort(state))   
+ setplaying(true);
+//  setindex((index)=> index+1)
 }    
 
 function updateSize(newSize){
   setsize(newSize); 
+//   history = [];
   console.log(newSize);
 }
+
 
 let timeOut;
 function handleInputChange(e){
     if(timeOut !== undefined){
         clearTimeout(timeOut);
     }
-    timeOut = setTimeout(()=>updateSize(e.target.value),1000);
+    timeOut = setTimeout(()=>updateSize(e.target.value),500);
 }
 
     return (
@@ -34,10 +36,10 @@ function handleInputChange(e){
                 </div>
 
                 <div>Input Size</div>
-                <div> <input type='range' min='10' max='50'  onChange={handleInputChange} ></input> </div>
+                <div> <input type='range' min='5' max='50'  onChange={handleInputChange} ></input> </div>
 
-                <div>Initial Array</div>
-                <div> <input type='option'></input> </div>
+                {/* <div>Initial Array</div>
+                <div> <input type='option'></input> </div> */}
 
                 <div>Sorting Algorithm</div>
                 <div><select name="Sorting Algo" id="sorting-algo">
