@@ -69,7 +69,7 @@ function Home() {
 
     useEffect(()=>{
         console.log("useEffect called", history.length,index)
-        if(index < history.length-1 && playing){
+        if( index < history.length-1 && playing){
             //   clearTimeout(timeoutRef.current);
             //   timeoutRef.current = 
             setTimeout(()=>{
@@ -81,7 +81,9 @@ function Home() {
             if(index>=history.length)  setplaying(false); 
             console.log("playing",playing)
         }
-    },[index,playing]);
+    },[index,playing,history]);
+    // history add nahi karne pe error aa rahi hai
+    // add dependency history or remove it
 
     return (
         <div className='home'>
