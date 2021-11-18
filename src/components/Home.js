@@ -39,15 +39,16 @@ function Home() {
     const [size, setsize] = useState(5);
     const [state, setstate] = useState(initialState(size));
 
-    let [history,sethistory] = useState(()=>{
-        let h =[]
-        h.push(
-            state.map((a)=>{
-              return   {...a};
-            })
-        )
-        return h;
-    });
+    let [history,sethistory] = useState([]);
+    //  let h =[]
+    //     h.push(
+    //         state.map((a)=>{
+    //           return   {...a};
+    //         })
+    //     )
+    //     return h;
+
+
 //      function initialiseHistory(){
 //        let h= []
 //        let arr= state.map((obj)=> obj);
@@ -64,12 +65,12 @@ function Home() {
 
     useEffect(() => {
        
-        setstate( history[index])
+        if(index>0) setstate( history[index])
     },[index]);
 
     useEffect(()=>{
         console.log("useEffect called", history.length,index)
-        if( index < history.length-1 && playing){
+        if(  playing && index < history.length-1){
             //   clearTimeout(timeoutRef.current);
             //   timeoutRef.current = 
             setTimeout(()=>{
@@ -81,7 +82,7 @@ function Home() {
             if(index>=history.length)  setplaying(false); 
             console.log("playing",playing)
         }
-    },[index,playing,history]);
+    },[index,playing]);
     // history add nahi karne pe error aa rahi hai
     // add dependency history or remove it
 

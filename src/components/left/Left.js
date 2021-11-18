@@ -31,9 +31,9 @@ function handleInputChange(e){
             <h1 >SORTING <br /> VISUALIZATION</h1>
             
             <div className="left__controler">
-                <div>
+                {/* <div>
                     <span>Dark Mode</span>  <span><button type='button'></button></span>
-                </div>
+                </div> */}
 
                 <div>Input Size</div>
                 <div> <input type='range' min='5' max='50'  onChange={handleInputChange} ></input> </div>

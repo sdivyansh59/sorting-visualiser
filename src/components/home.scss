@@ -7,4 +7,13 @@
     display: flex;
     overflow-y: hidden;
     
+    
+  @media (max-width:520px){
+   flex-direction: column-reverse;
+   overflow-y: scroll;
+   height: auto;
+  }
+    
 }
+
+
