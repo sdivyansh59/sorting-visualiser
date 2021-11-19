@@ -1,6 +1,5 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useRef} from 'react'
 import './home.scss';
-
 import Left from './left/Left'
 import Right from './right/Right'
 const  generator = require('random-array-generator');
@@ -36,9 +35,9 @@ function Home() {
     */
   
 
-    const [size, setsize] = useState(5);
+    const [size, setsize] = useState(20);
     const [state, setstate] = useState(initialState(size));
-
+    const [speed ,setSpeed]  = useState(300); 
     let [history,sethistory] = useState([]);
     //  let h =[]
     //     h.push(
@@ -57,10 +56,18 @@ function Home() {
 //    }
     const [playing, setplaying] = useState(false);
     const [index ,setindex] = useState(0);
-    // const timeoutRef = useRef();
+    const timeoutRef = useRef();
 
    useEffect(()=>{
+        setplaying(false);
+        setindex(0);
+        clearTimeout(timeoutRef.current);
+        sethistory([]);
         setstate(initialState(size));
+        // Now makaing changed
+       
+        sethistory([]);
+       
    },[size])
 
     useEffect(() => {
@@ -71,12 +78,12 @@ function Home() {
     useEffect(()=>{
         console.log("useEffect called", history.length,index)
         if(  playing && index < history.length-1){
-            //   clearTimeout(timeoutRef.current);
-            //   timeoutRef.current = 
+              clearTimeout(timeoutRef.current);
+              timeoutRef.current = 
             setTimeout(()=>{
                 console.log(index,playing);
                 setindex( (index)=>index+1);
-            },500);
+            },speed);
 
         }else{
             if(index>=history.length)  setplaying(false); 
@@ -88,10 +95,22 @@ function Home() {
 
     return (
         <div className='home'>
-           <Left size={size} setsize={setsize} state={state}  history={history} 
-           setplaying={setplaying} sethistory={sethistory}
-           setindex={setindex}/>
-           <Right state={state} size={size}/> 
+           <Left 
+           size={size}  
+           setsize={setsize} 
+           state={state}      
+           history={history} 
+           setplaying={setplaying}   
+           sethistory={sethistory}
+           setindex={setindex} 
+           setSpeed={setSpeed}
+           playing = {playing}
+           />
+
+           <Right 
+           state={state} 
+           size={size}
+           /> 
         </div>
     )
 }

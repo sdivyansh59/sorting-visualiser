@@ -3,7 +3,15 @@ import './left.scss';
 import { bubbleSort } from '../../Algorithms/bubbe-sort';
 
 
-function Left({size,setsize,state,setplaying,sethistory,setindex})  {  
+function Left(
+    {
+    size,setsize,
+    state,
+    playing,setplaying,
+    sethistory,
+    setindex,
+    setSpeed,
+    })  {  
 
 const handleClick = () => {
  sethistory(bubbleSort(state))   
@@ -26,6 +34,9 @@ function handleInputChange(e){
     timeOut = setTimeout(()=>updateSize(e.target.value),500);
 }
 
+function handleSpeedChange(event){
+    setSpeed(event.target.value);
+}
     return (
         <div className='left'>
             <h1 >SORTING <br /> VISUALIZATION</h1>
@@ -52,13 +63,13 @@ function handleInputChange(e){
 
                 <div>Speed</div> 
                 <div>
-                    <input type="range" id="vol" name="vol" min="1" max="20"></input>
+                    <input type="range" id="vol" name="vol" min="50" max="500" onChange = {handleSpeedChange}></input>
                 </div>
 
 
             </div>
 
-            <button onClick={handleClick}>Start</button>
+            <button onClick={handleClick} disabled={playing}>Start</button>
         </div>
     )
 }
