@@ -6,6 +6,15 @@
     padding: 20px ;
     border: 1px solid black;
 
+    &__Notice{
+        display: flex;
+        flex-direction: row;
+        font-weight: bold;
+        font-size: 1rem;
+        justify-content: space-around;
+        margin-left: 60%;
+    }
+
     &__bar{
         display: inline-block;
         margin: 5px ;
