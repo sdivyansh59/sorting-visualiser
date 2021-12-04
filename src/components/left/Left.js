@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './left.scss';
 import { bubbleSort } from '../../Algorithms/bubbe-sort';
+import {insertionSort} from '../../Algorithms/insertion-sort'
 
 
 function Left(
@@ -13,10 +14,43 @@ function Left(
     setSpeed,
     })  {  
 
+const [algo, setAlgo] = useState("");
+
+function _handleChange(event){
+    console.log(event.target.value + " selected");
+    setAlgo(event.target.value);
+}
+
 const handleClick = () => {
- sethistory(bubbleSort(state))   
- setplaying(true);
-//  setindex((index)=> index+1)
+
+    switch(algo){
+       
+        case "InsertionSort":{
+            console.log("inside insertion switch");
+            sethistory(insertionSort(state))
+            setplaying(true);
+            break;
+        }
+        case "MergeSort":{
+            sethistory(bubbleSort(state))
+            setplaying(true);
+            break;
+        }
+        case "QuickSort":{
+            sethistory(bubbleSort(state))
+            setplaying(true);
+            break;
+        }
+        default :{
+            //sethistory(bubbleSort(state));
+            sethistory(insertionSort(state))
+            setplaying(true);
+        }
+       
+    }
+    
+ 
+
 }    
 
 function updateSize(newSize){
@@ -53,11 +87,11 @@ function handleSpeedChange(event){
                 <div> <input type='option'></input> </div> */}
 
                 <div>Sorting Algorithm</div>
-                <div><select name="Sorting Algo" id="sorting-algo">
-                       <option value="Bubble Sort">Bubble Sort</option>
-                       <option value="Insertion Sort">Insertion Sort</option>
-                       <option value="Merge Sort">Merge Sort</option>
-                       <option value="Quick Sort">Quick Sort</option>
+                <div><select name="Sorting Algo" onChange={_handleChange}>
+                       <option value="BubbleSort">Bubble Sort</option>
+                       <option value="InsertionSort">Insertion Sort</option>
+                       <option value="MergeSort">Merge Sort</option>
+                       <option value="QuickSort">Quick Sort</option>
                      </select>
                 </div>
 

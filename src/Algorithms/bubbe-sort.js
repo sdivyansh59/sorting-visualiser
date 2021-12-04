@@ -3,7 +3,7 @@ export const  bubbleSort = ( state) => {
   let arr = state.map((objArr)=> objArr );
   let history =[];
 
-  console.log("clicked");
+  // console.log("clicked");
 
   history.push(
        arr.map((a)=>{
