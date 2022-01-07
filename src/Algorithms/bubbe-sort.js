@@ -71,6 +71,24 @@ for(let i = 0; i < arr.length; i++){
 
 // print history arra
 // console.log(history);
+
+
+ 
+/*  Evert thing done just show 2nd last step as green and last step as default color  */
+
+
+    // push sorted aray with all green color
+     history.push(
+       arr.map((a)=>{
+          return {...a, color : "#32CD32"};
+       } )
+  )
+   // push with default color
+   history.push(
+       arr.map((a)=>{
+          return {...a};
+       } )
+  )
 return history;
 }
 

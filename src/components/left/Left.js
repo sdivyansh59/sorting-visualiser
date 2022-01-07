@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
 import './left.scss';
-import { bubbleSort } from '../../Algorithms/bubbe-sort';
+// import { bubbleSort } from '../../Algorithms/bubbe-sort';
 import {insertionSort} from '../../Algorithms/insertion-sort'
+import {mergeSort} from '../../Algorithms/merge-sort'
+import {quickSort} from '../../Algorithms/quick-sort'
+import { bubbleSort } from '../../Algorithms/bubbe-sort';
 
 
 function Left(
@@ -32,17 +35,22 @@ const handleClick = () => {
             break;
         }
         case "MergeSort":{
-            sethistory(bubbleSort(state))
+            sethistory(mergeSort(state))
             setplaying(true);
             break;
         }
         case "QuickSort":{
-            sethistory(bubbleSort(state))
+            sethistory(quickSort(state))
             setplaying(true);
             break;
         }
+        case "BubbleSort" : {
+            sethistory(bubbleSort(state))
+            setplaying(true)
+            break;
+        }
+
         default :{
-            //sethistory(bubbleSort(state));
             sethistory(insertionSort(state))
             setplaying(true);
         }
@@ -97,7 +105,7 @@ function handleSpeedChange(event){
 
                 <div>Speed</div> 
                 <div>
-                    <input type="range" id="vol" name="vol" min="50" max="500" onChange = {handleSpeedChange}></input>
+                    <input type="range" id="vol" name="vol" min="200" max="1000" onChange = {handleSpeedChange}></input>
                 </div>
 
 
