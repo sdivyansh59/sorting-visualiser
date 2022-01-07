@@ -49,20 +49,6 @@ function merge_sort(arr, startIndex, endIndex, history){
     if(startIndex < endIndex){
         let mid = Math.floor((startIndex + endIndex)/2);
 
-        // make mid red
-        // history.push(
-        //     arr.map((obj, idx)=>{
-        //         if (idx === mid) {
-        //             return {
-        //                 ...obj,
-        //                 color: "red"
-        //             }
-        //         }
-               
-        //         return { ...obj }
-        //     })
-        // );
-
         merge_sort(arr, startIndex, mid, history);
         merge_sort(arr, mid+1, endIndex, history);
         merge(arr, startIndex, mid, endIndex, history);
@@ -123,15 +109,7 @@ function merge(arr, startIndex, mid, endIndex, history){
         }
     }   
     
-    // make sorted element green
-    history.push(
-        arr.map((obj, idx)=>{
-                return {
-                    ...obj,
-                    color: "#98FF98"
-                }
-        })
-    );
+    
     // make it default color
     history.push(
         arr.map((obj, idx)=>{
